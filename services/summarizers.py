@@ -11,7 +11,7 @@ Returns summary (rn, will return keywords later)
 from gensim.summarization.summarizer import summarize
 
 # TODO add ratio, split optional param
-def gensimTextRank(text, title, ratio=0.4, split=False):
+def gensimTextRank(text, title, ratio=0.3, split=False):
 	return summarize(text, ratio)
 
 # Tests
