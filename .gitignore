@@ -1,2 +1,10 @@
 # Python virtual environment
 .venv
+
+# OS Generated files
+.DS_Store
+
+__pycache__
+
+# Text editor generated files
+.vscode
