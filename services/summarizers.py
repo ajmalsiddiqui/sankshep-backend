@@ -5,13 +5,16 @@ Returns summary (rn, will return keywords later)
 '''
 
 # TODO add keyword generator(pytextrank? cortical?)
+# TODO additional optional model specific args
 
 # The implementation of TextRank from the gensim library
 from gensim.summarization.summarizer import summarize
 
-def gensimTextRank(text, title):
-	return summarize(text, ratio=0.4, split=False)
+# TODO add ratio, split optional param
+def gensimTextRank(text, title, ratio=0.4, split=False):
+	return summarize(text, ratio)
 
+# Tests
 if __name__ == "__main__":
 	text = '''
 	I have also used Raspberry Pis as home security cameras, server monitoring devices, cheap headless machines (basically running low-weight scripts 24/7 with a low cost-to-me)... others have used them for media centers and even for voice-enabled IoT devices. The possibilities are endless, but first we need to get acquainted!
