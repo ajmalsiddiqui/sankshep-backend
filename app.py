@@ -43,6 +43,7 @@ def summarize():
     response = {
         'summary': summary.replace('\n', '<br />'),
         'keywords': keywords,
+        'title': title,
         'status': 200
     }
     return json.dumps(response)
@@ -52,6 +53,7 @@ def summarize():
 def summarize_youtube():
     data = request.get_json()
     youtube_url = data['url']
+    title = data['title']
     content = getCaptionText(youtube_url)
     if(len(content.split('. ')) < 10):
         content = addStops(content)
@@ -61,6 +63,7 @@ def summarize_youtube():
     response = {
         'summary': summary.replace('\n', '<br />'),
         'keywords': keywords,
+        'title': title,
         'status': 200
     }
     return json.dumps(response)
@@ -78,6 +81,7 @@ def translate():
     content = translateSummary(data['lang'], data['text'])
     succ_resp = {
         'content': content.replace('\n', '<br />'),
+        'title': data['title'],
         'status': 200
     }
     return json.dumps(succ_resp)
@@ -89,6 +93,7 @@ def index():
     if request.method == 'POST':
 
         file = request.files['file']
+        data = request.get_json()
         print("got file")
         if file and allowed_file(file.filename):
             print("saving")
@@ -114,7 +119,8 @@ def index():
         succ_resp = {
             'status': 200,
             'keywords': keywords,
-            'summary': summary.replace('\n', '<br />')
+            'summary': summary.replace('\n', '<br />'),
+            'title': data['title']
         }
         return json.dumps(succ_resp)
 
