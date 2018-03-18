@@ -41,7 +41,7 @@ def summarize():
     title = data['title']
     keywords, summary = gensimTextRank(text, title)
     response = {
-        'summary': summary.replace('\n', '<br />'),
+        'summary': summary,
         'keywords': keywords,
         'title': title,
         'status': 200
@@ -61,7 +61,7 @@ def summarize_youtube():
     # print(content)
     keywords, summary = gensimTextRank(content, 'dummy')
     response = {
-        'summary': summary.replace('\n', '<br />'),
+        'summary': summary,
         'keywords': keywords,
         'title': title,
         'status': 200
@@ -80,7 +80,7 @@ def translate():
         return json.dumps(fail_resp)
     content = translateSummary(data['lang'], data['text'])
     succ_resp = {
-        'content': content.replace('\n', '<br />'),
+        'content': content,
         'title': data['title'],
         'status': 200
     }
@@ -119,7 +119,7 @@ def index():
         succ_resp = {
             'status': 200,
             'keywords': keywords,
-            'summary': summary.replace('\n', '<br />'),
+            'summary': summary,
             'title': data['title']
         }
         return json.dumps(succ_resp)
