@@ -52,8 +52,10 @@ def summarize():
 def summarize_youtube():
     data = request.get_json()
     youtube_url = data['url']
-    # content = getCaptionText(youtube_url)
-    content = addStops(getCaptionText(youtube_url))
+    content = getCaptionText(youtube_url)
+    if(len(content.split('.')) < 10):
+        content = addStops(content)
+    # content = addStops(getCaptionText(youtube_url))
     # print(content)
     keywords, summary = gensimTextRank(content, 'dummy')
     response = {
@@ -117,6 +119,8 @@ def index():
         return json.dumps(succ_resp)
 
 # Route doesn't work
+
+
 @app.route('/audio', methods=['POST'])
 def summarize_audio():
     if request.method == 'POST':
