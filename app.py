@@ -41,7 +41,7 @@ def summarize():
     title = data['title']
     keywords, summary = gensimTextRank(text, title)
     response = {
-        'summary': summary,
+        'summary': summary.replace('\n', '<br />'),
         'keywords': keywords,
         'status': 200
     }
@@ -57,7 +57,7 @@ def summarize_youtube():
     # print(content)
     keywords, summary = gensimTextRank(content, 'dummy')
     response = {
-        'summary': summary,
+        'summary': summary.replace('\n', '<br />'),
         'keywords': keywords,
         'status': 200
     }
@@ -75,7 +75,7 @@ def translate():
         return json.dumps(fail_resp)
     content = translateSummary(data['lang'], data['text'])
     succ_resp = {
-        'content': content,
+        'content': content.replace('\n', '<br />'),
         'status': 200
     }
     return json.dumps(succ_resp)
@@ -112,11 +112,11 @@ def index():
         succ_resp = {
             'status': 200,
             'keywords': keywords,
-            'summary': summary
+            'summary': summary.replace('\n', '<br />')
         }
         return json.dumps(succ_resp)
 
-
+# Route doesn't work
 @app.route('/audio', methods=['POST'])
 def summarize_audio():
     if request.method == 'POST':
