@@ -53,8 +53,9 @@ def summarize_youtube():
     data = request.get_json()
     youtube_url = data['url']
     content = getCaptionText(youtube_url)
-    if(len(content.split('.')) < 10):
-        content = addStops(content)
+    if(len(content.split('. ')) < 10):
+		
+		content = addStops(content)
     # content = addStops(getCaptionText(youtube_url))
     # print(content)
     keywords, summary = gensimTextRank(content, 'dummy')
