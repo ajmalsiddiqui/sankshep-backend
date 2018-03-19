@@ -6,6 +6,7 @@ from bs4 import BeautifulSoup
 import urllib as urllib2
 import requests
 
+# Don't bother using these two
 srtBaseUrl = "https://downsub.com/"
 srtLink = "https://downsub.com/?url=https%3A%2F%2F"
 
@@ -13,6 +14,8 @@ diycaptionsBase = "http://diycaptions.com/php/get-automatic-captions-as-txt.php?
 
 demoYouTubeLink = "https://www.youtube.com/watch?v=WjkRdgQNGec"
 
+# We're not using this
+# The DIYcaptions one works better
 def getSrtFromLink(url):
 	request = requests.get(srtLink + url)
 	data = request.text
@@ -45,6 +48,8 @@ def getCaptionText(youtubeUrl):
 	# print(content)
 	return content
 
+# Add full stops randomly to text which doesn't have punctuated captions
+# LOL
 def addStops(content, skipWords = 25):
 	s = ''
 	for idx, word in enumerate(content.split(' ')):

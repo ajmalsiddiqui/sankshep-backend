@@ -1,11 +1,11 @@
 '''
 This file contains various text summary and keyword generation models.
 Function signature: text, title
-Returns summary (rn, will return keywords later)
+Returns summary 
 '''
 
-# TODO add keyword generator(pytextrank? cortical?)
 # TODO additional optional model specific args
+# TODO add other text summarization models
 
 # The implementation of TextRank from the gensim library
 from gensim.summarization.summarizer import summarize

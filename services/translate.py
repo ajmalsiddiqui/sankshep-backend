@@ -6,7 +6,7 @@ import requests
 import json
 
 base_url = 'https://translate.yandex.net/api/v1.5/tr.json/translate'
-yandex_key = 'trnsl.1.1.20180317T192045Z.366bb2591fccbee9.a9f835d48c27d733810b23a42f50792373badf2a'
+yandex_key = 'YANDEX_API_KEY_HERE'
 
 def translateSummary(toLang, text):
 	params = {
